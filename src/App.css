@@ -175,3 +175,7 @@ ul {
 .selectorClass {
     width: 200px;
 }
+
+.cardButton {
+    margin: 10px;
+}

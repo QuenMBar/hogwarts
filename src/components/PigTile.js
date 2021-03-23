@@ -5,10 +5,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Collapse from "@material-ui/core/Collapse";
 import Typography from "@material-ui/core/Typography";
+import { Button } from "@material-ui/core";
 
 export default class RecipeReviewCard extends Component {
     state = {
         expanded: false,
+        amHidden: false,
     };
 
     handleExpandClick = () => {
@@ -23,11 +25,26 @@ export default class RecipeReviewCard extends Component {
         return pigPics;
     };
 
+    hideSelf = () => {
+        this.setState({
+            amHidden: true,
+        });
+    };
+
     render() {
+        if (this.state.amHidden) {
+            return null;
+        }
         return (
             <Card className="pigCard" onClick={this.handleExpandClick}>
                 <CardHeader title={this.props.hogData.name} />
                 <CardMedia className="pigImg" image={this.getImage(this.props.hogData.name)} title="Babe Pig" />
+                <div className="cardButton">
+                    <Button onClick={this.hideSelf} variant="outlined">
+                        Hide Pig
+                    </Button>
+                </div>
+
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Weight: {this.props.hogData.weight}</Typography>
