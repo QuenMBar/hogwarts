@@ -126,7 +126,7 @@ export default class PigContainer extends Component {
                 <Grid container justify="center" className="gridContain" spacing={5}>
                     {this.state.currentPigs.map((pigData, index) => (
                         <Grid item>
-                            <PigTile key={index} hogData={pigData} />
+                            <PigTile key={pigData.name} hogData={pigData} />
                         </Grid>
                     ))}
                 </Grid>
